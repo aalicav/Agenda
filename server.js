@@ -12,6 +12,7 @@ mongoose.connect(process.env.CONNECTIONSTRING,
     app.emit('pronto');
   })
   .catch(e => console.log(e));
+const PORT = process.env.PORT || 5000;
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
@@ -51,7 +52,7 @@ app.use(csrfMiddleware);
 app.use(routes);
 
 app.on('pronto', () => {
-  app.listen(3000, () => {
+  app.listen(PORT, () => {
     console.log('Acessar http://localhost:3000');
     console.log('Servidor executando na porta 3000');
   });
